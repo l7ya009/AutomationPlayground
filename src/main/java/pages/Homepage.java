@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -22,21 +23,25 @@ public class Homepage {
 
     /******************************** Assertions ******************************************/
 
+    @Step("checkThatLogOutLinkShouldBeDisplayed")
     public Homepage checkThatLogOutLinkShouldBeDisplayed(){
         Assert.assertTrue(driver.get().findElement(logoutLink).isDisplayed());
         return this;
     }
 
+    @Step("checkThatUserShouldBeNavigatedToHomePageSuccessfully")
     public Homepage checkThatUserShouldBeNavigatedToHomePageSuccessfully(){
         Assert.assertEquals(driver.browser().getCurrentUrl(),"https://automationexercise.com/");
         return this;
     }
 
+    @Step("checkThatLoginLinkShouldBeDisplayed")
     public Homepage checkThatLoginLinkShouldBeDisplayed(){
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("/login"));
         return this;
     }
 
+    @Step("checkThatDeleteAccountLinkShouldBeDisplayed")
     public Homepage checkThatDeleteAccountLinkShouldBeDisplayed(){
         Assert.assertTrue(driver.get().findElement(deleteAccountLink).isDisplayed());
         return this;
