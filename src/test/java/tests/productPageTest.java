@@ -12,7 +12,7 @@ public class productPageTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
+        driver = new Driver();
         driver.get().manage().window().maximize();
         driver.browser().navigateToUrl("http://automationexercise.com/");
     }

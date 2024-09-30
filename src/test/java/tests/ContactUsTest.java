@@ -14,28 +14,32 @@ import java.time.Duration;
 
 public class ContactUsTest {
 
-   public ThreadLocal<Driver> driver;
+//   public ThreadLocal<Driver> driver;
 
+    public Driver driver;
+//    ThreadLocal<Driver> parallelDriver;
 
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void setup(@Optional("CHROME")String browserName) {
-        driver = new ThreadLocal<>();
-        driver.set(new Driver(browserName));
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
+//        driver.set(new Driver(browserName));
 
-        driver.get().get().manage().window().maximize();
-        driver.get().browser().navigateToUrl("http://automationexercise.com/");
-        driver.get().get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
+        driver.get().manage().window().maximize();
+        driver.browser().navigateToUrl("http://automationexercise.com/");
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
     }
 
     @Test
-    public void contactUsTest() throws InterruptedException {
+//    public void contactUsTest() throws InterruptedException {
 //        driver.get().element().hoverOnItem(By.xpath("(//div[@class=\"product-overlay\"])[1]"))
 //                .click(By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]"));
 //        Thread.sleep(5000);
+    public void contactUsTest(){
 
 
-        new Homepage(driver.get()).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
+        new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnContactUsLink()
                         .checkThatContactUsPageIsLoadedSuccessfully()
                         .fillInContactUsForm("Yehia", "yehiaos@yahoo.com", "Test", "Welcome")
@@ -58,7 +62,7 @@ public class ContactUsTest {
 
     @AfterClass
     public void teardown() {
-        driver.get().get().manage().deleteAllCookies();
+        driver.get().manage().deleteAllCookies();
         driver.get().quit();
 
     }

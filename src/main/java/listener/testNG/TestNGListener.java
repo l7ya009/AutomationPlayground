@@ -1,24 +1,42 @@
 package listener.testNG;
 
+import Utilities.AllureReportHelper;
 import Utilities.ScreenShotManager;
 import driverfactory.Driver;
 import org.testng.IExecutionListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
+
+import static Utilities.properties.PropertiesManager.ReportConfig;
+import static Utilities.properties.PropertiesManager.initializeProperties;
 
 public class TestNGListener implements ITestListener, IExecutionListener {
 
     @Override
     public void onExecutionStart() {
         System.out.println("************* Welcome To Selenium FrameWork**************");
+        initializeProperties();
+        if(ReportConfig.getProperty("CleanAllureReport").equalsIgnoreCase("true")) {
+            AllureReportHelper.cleanAllureReport();
+            System.out.println("Allure Report Cleaned Successfully");
+        }
     }
 
     @Override
     public void onExecutionFinish() {
-        System.out.println("Printing Reports");
-        System.out.println("************** End Of Execution ******************");
+        System.out.println("Generating Reports");
+        if (ReportConfig.getProperty("OpenAllureReportAfterExecution").equalsIgnoreCase("true")) {
+            try {
+                System.out.println("Opening Allure Report");
+                Runtime.getRuntime().exec("reportGeneration.bat");
+            } catch (IOException e) {
+                System.out.println("Unable to Generate Allure Report, may be there's an issue in the batch file/commands");
+            }
+            System.out.println("************** End Of Execution ******************");
+        }
     }
 
     @Override
