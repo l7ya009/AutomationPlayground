@@ -37,6 +37,15 @@ public class productPageTest {
                                .checkThatProductDetailsDisplayed();
     }
 
+    @Test(dependsOnMethods = "productPageDisplayed" , priority = 3)
+    public void poloProductDesplayed() {
+        new Homepage(driver).clickOnProductLink();
+        new ProductPage(driver).enterProductNameInSearch("polo").
+                clickOnSearchButton()
+                .checkThatPoloProductDisplayed();
+    }
+
+
     @AfterClass
     public void tearDown() {
         driver.browser().deleteAllCookies();

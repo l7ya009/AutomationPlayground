@@ -16,6 +16,16 @@ public class Homepage {
     By contactUsLink = By.xpath("//a[@href=\"/contact_us\"]");
     By productLink = By.xpath("//a[@href=\"/products\"]");
     By testCasesLink = By.xpath("(//a[@href=\"/test_cases\"])[1]");
+    By subscription = By.xpath("(//div[@class=\"row\"])[4]");
+//By subscription = By.id("footer");
+//    By subscriptionField = By.id("susbscribe_email");
+    By subscriptionField = By.xpath("//input[@type=\"email\"]");
+    By subscriptionButton = By.xpath("//i[@class=\"fa fa-arrow-circle-o-right\"]");
+    By successfullSubscriptionMessage = By.name("csrfmiddlewaretoken");
+    By cart = By.xpath("//a[@href=\"/view_cart\"]");
+    By viewProduct = By.xpath("//a[@href=\"/product_details/1\"]");
+    By productDetails = By.xpath("//div[@class=\"col-sm-9 padding-right\"]");
+
 
     public Homepage(Driver driver) {
         this.driver = driver;
@@ -44,6 +54,25 @@ public class Homepage {
     @Step("checkThatDeleteAccountLinkShouldBeDisplayed")
     public Homepage checkThatDeleteAccountLinkShouldBeDisplayed(){
         Assert.assertTrue(driver.get().findElement(deleteAccountLink).isDisplayed());
+        return this;
+    }
+
+    @Step("checkThatSubscriptionIsDisplayed")
+    public Homepage checkThatSubscriptionIsDisplayed(){
+        Assert.assertTrue(driver.get().findElement(subscription).isDisplayed());
+        return this;
+    }
+
+
+    @Step("checkThatSuccessfulSubscriptionMessageDisplayed")
+    public Homepage checkThatSuccessfulSubscriptionMessageDisplayed(){
+        Assert.assertEquals(driver.element().getTextOf(successfullSubscriptionMessage),"You have been successfully subscribed!");
+        return this;
+    }
+
+    @Step("checkThatProductDetailsDisplayed")
+    public Homepage checkThatProductDetailsDisplayed(){
+        Assert.assertTrue(driver.get().findElement(productDetails).isDisplayed());
         return this;
     }
 
@@ -80,4 +109,25 @@ public class Homepage {
         driver.element().click(testCasesLink);
         return new TestCasesPage(driver);
     }
+
+    public Homepage fillSubscriptionField(String email){
+        driver.element().fillField(subscriptionField, email);
+        return this;
+    }
+
+    public Homepage clickOnSubscriptionButton(){
+        driver.element().click(subscriptionButton);
+        return this;
+    }
+
+    public Homepage clickOnCart(){
+        driver.element().click(cart);
+        return this;
+    }
+
+    public Homepage clickOnViewProduct(){
+        driver.element().click(viewProduct);
+        return this;
+    }
+
 }
