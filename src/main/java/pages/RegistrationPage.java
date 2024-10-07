@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +36,7 @@ public class RegistrationPage {
 
     /******************************** Assertions ******************************************/
 
+    @Step("checkThatUserShouldBeNavigatedToRegistrationPage")
     public RegistrationPage checkThatUserShouldBeNavigatedToRegistrationPage() {
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("/signup"));
         Assert.assertEquals(driver.element().getTextOf(enterAccountInformationTitle), "ENTER ACCOUNT INFORMATION");
@@ -43,66 +45,97 @@ public class RegistrationPage {
 
     /******************************** Actions ********************************************/
 
+    @Step("selectTitle")
     public RegistrationPage selectTitle(){
         driver.element().click(title);
         return this;
     }
+
+    @Step("fillPassword")
     public RegistrationPage fillPassword(String pass){
         driver.element().fillField(password, pass);
         return this;
     }
+
+    @Step("fillDayOfBirth")
     public RegistrationPage fillDayOfBirth(){
         driver.element().selectByValue(dayOfBirth, "15");
         return this;
     }
+
+    @Step("fillMonthOfBirth")
     public RegistrationPage fillMonthOfBirth(){
         driver.element().selectByValue(monthOfBirth, "4");
         return this;
     }
+
+    @Step("fillYearOfBirth")
     public RegistrationPage fillYearOfBirth(){
         driver.element().selectByValue(yearOfBirth, "1992");
         return this;
     }
+
+    @Step("fillFirstName")
     public RegistrationPage fillFirstName(String name){
         driver.element().fillField(firstName, name);
         return this;
     }
+
+    @Step("fillLastName")
     public RegistrationPage fillLastName(String name){
         driver.element().fillField(lastName, name);
         return this;
     }
+
+    @Step("fillCompany")
     public RegistrationPage fillCompany(String companyName){
         driver.element().fillField(company, companyName);
         return this;
     }
+
+    @Step("fillAddress1")
     public RegistrationPage fillAddress1(String address){
         driver.element().fillField(address1, address);
         return this;
     }
+
+    @Step("fillAddress2")
     public RegistrationPage fillAddress2(String address){
         driver.element().fillField(address2, address);
         return this;
     }
+
+    @Step("fillCountry")
     public RegistrationPage fillCountry(){
         driver.element().selectByValue(country, "United States");
         return this;
     }
+
+    @Step("fillState")
     public RegistrationPage fillState(String stateName){
         driver.element().fillField(state, stateName);
         return this;
     }
+
+    @Step("fillCity")
     public RegistrationPage fillCity(String cityName){
         driver.element().fillField(city, cityName);
         return this;
     }
+
+    @Step("fillZipCode")
     public RegistrationPage fillZipCode(String zipCodeNumber){
         driver.element().fillField(zipcode, zipCodeNumber);
         return this;
     }
+
+    @Step("fillMobileNumber")
     public RegistrationPage fillMobileNumber(String mobileNum){
         driver.element().fillField(mobileNumber, mobileNum);
         return this;
     }
+
+    @Step("clickCreateAccountButton")
     public RegistrationSuccessPage clickCreateAccountButton(){
         driver.element().click(createAccountButton);
         return new RegistrationSuccessPage(driver);

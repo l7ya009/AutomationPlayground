@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,6 +16,7 @@ public class RegistrationSuccessPage {
     private WebDriverWait wait;
 
     By successMessage = By.xpath("//h2[@data-qa=\"account-created\"]");
+    By cartLink = By.xpath("//a[@href=\"/view_cart\"]");
 
     public RegistrationSuccessPage(Driver driver) {
         this.driver = driver;
@@ -23,6 +25,7 @@ public class RegistrationSuccessPage {
 
     /******************************** Assertions ******************************************/
 
+    @Step("checkThatSuccessMessageShouldBeDisplayed")
     public RegistrationSuccessPage checkThatSuccessMessageShouldBeDisplayed() {
 //        wait.until(ExpectedConditions.urlContains("/account_created"));
 //        wait.until(ExpectedConditions.visibilityOf(driver.findElement(successMessage)));
@@ -32,4 +35,13 @@ public class RegistrationSuccessPage {
         Assert.assertEquals(driver.element().getTextOf(successMessage), "ACCOUNT CREATED!");
         return this;
     }
+
+    /******************************** Actions ******************************************/
+
+    @Step("clickOnCart")
+    public RegistrationSuccessPage clickOnCart(){
+        driver.element().click(cartLink);
+        return this;
+    }
+
 }

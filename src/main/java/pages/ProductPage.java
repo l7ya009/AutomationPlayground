@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -38,22 +39,26 @@ public class ProductPage {
 
     /**************************** Assertions *******************************************/
 
+    @Step("checkThatUserNavigatedToProductPageSuccessfully")
     public ProductPage checkThatUserNavigatedToProductPageSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("products"));
         Assert.assertEquals(driver.element().getTextOf(formTitle), "ALL PRODUCTS");
         return this;
     }
 
+    @Step("checkThatAllProductsDisplayed")
     public ProductPage checkThatAllProductsDisplayed() {
         Assert.assertTrue(driver.get().findElement(allProducts).isDisplayed());
         return this;
     }
 
+    @Step("checkThatSearchProductDisplayed")
     public ProductPage checkThatSearchProductDisplayed() {
         Assert.assertTrue(driver.get().findElement(searchProduct).isDisplayed());
         return this;
     }
 
+    @Step("checkThatProductDetailsDisplayed")
     public ProductPage checkThatProductDetailsDisplayed() {
 //        Assert.assertTrue(driver.findElement(productInformation).isDisplayed());
         Assert.assertTrue(driver.get().findElement(productName).isDisplayed());
@@ -65,11 +70,13 @@ public class ProductPage {
         return this;
     }
 
+    @Step("checkThatPoloProductDisplayed")
     public ProductPage checkThatPoloProductDisplayed(){
         Assert.assertTrue(driver.get().findElement(poloProduct).isDisplayed());
         return this;
     }
 
+    @Step("checkThatSelectedProductDetailsDisplayed")
     public ProductPage checkThatSelectedProductDetailsDisplayed(){
         Assert.assertTrue(driver.get().findElement(productDetails).isDisplayed());
         return this;
@@ -78,40 +85,50 @@ public class ProductPage {
 
     /******************************* Actions *******************************************/
 
+    @Step("clickOnViewProductButton")
     public ProductPage clickOnViewProductButton() {
         driver.element().click(viewProductButtom);
         return this;
     }
 
+    @Step("enterProductNameInSearch")
     public ProductPage enterProductNameInSearch(String product) {
         driver.element().fillField(searchProduct,product);
         return this;
     }
 
+    @Step("clickOnSearchButton")
     public ProductPage clickOnSearchButton(){
         driver.element().click(searchButton);
         return this;
     }
 
+    @Step("scrollToFirstProduct")
     public ProductPage scrollToFirstProduct(){
         driver.element().scrollToElement(firstProduct);
         return this;
     }
 
+    @Step("hooverOnFirstProduct")
     public ProductPage hooverOnFirstProduct(){
         driver.element().hoverOnItem(firstProductHoverLink);
         return this;
     }
+
+    @Step("clickOnAddToCartFirstProduct")
     public ProductPage clickOnAddToCartFirstProduct() throws InterruptedException {
         driver.element().click(addToCartFirstProduct);
         Thread.sleep(5000);
         return this;
     }
 
+    @Step("hooverOnSecondProduct")
     public ProductPage hooverOnSecondProduct(){
         driver.element().hoverOnItem(secondProductHoverLink);
         return this;
     }
+
+    @Step("clickOnAddToCartSecondProduct")
     public ProductPage clickOnAddToCartSecondProduct() throws InterruptedException {
         driver.element().click(addToCartSecondProduct);
         Thread.sleep(5000);
@@ -138,22 +155,26 @@ public class ProductPage {
 //        return this;
 //    }
 
+    @Step("clickOnContinueButton")
     public ProductPage clickOnContinueButton() throws InterruptedException {
         driver.element().click(continueShoppingButton);
         Thread.sleep(5000);
         return this;
     }
 
+    @Step("clickOnCartButton")
     public ProductPage clickOnCartButton(){
         driver.element().click(cartButton);
         return this;
     }
 
+    @Step("increaseQuantityToFour")
     public ProductPage increaseQuantityToFour(int quantityNum){
         driver.element().fillField(quantity, String.valueOf(quantityNum));
         return this;
         }
 
+        @Step("clickOnAddToCartButton")
         public ProductPage clickOnAddToCartButton() throws InterruptedException {
         driver.element().click(addToCartButton);
         Thread.sleep(5000);

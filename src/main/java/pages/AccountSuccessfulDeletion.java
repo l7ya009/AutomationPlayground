@@ -1,9 +1,11 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class AccountSuccessfulDeletion {
     public Driver driver;
@@ -17,6 +19,7 @@ public class AccountSuccessfulDeletion {
 
     /******************************** Assertions ******************************************/
 
+    @Step("checkThatAccountShouldBeDeletedSuccessfully")
     public AccountSuccessfulDeletion checkThatAccountShouldBeDeletedSuccessfully() {
 
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("/delete_account"));
@@ -27,6 +30,7 @@ public class AccountSuccessfulDeletion {
 
     /**************************** Actions ************************************************/
 
+    @Step("clickContinueButton")
     public Homepage clickContinueButton() {
         driver.element().click(continueButton);
         return new Homepage(driver);

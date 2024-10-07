@@ -25,7 +25,9 @@ public class Homepage {
     By cart = By.xpath("//a[@href=\"/view_cart\"]");
     By viewProduct = By.xpath("//a[@href=\"/product_details/1\"]");
     By productDetails = By.xpath("//div[@class=\"col-sm-9 padding-right\"]");
-
+    By addToCartFirstProduct = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
+    By continueShoppingButton = By.xpath("//button[@class=\"btn btn-success close-modal btn-block\"]");
+    By productDetailsInCart = By.id("product-1");
 
     public Homepage(Driver driver) {
         this.driver = driver;
@@ -76,57 +78,88 @@ public class Homepage {
         return this;
     }
 
+    @Step("checkThatCartPageIsDisplayed")
+    public Homepage checkThatCartPageIsDisplayed(){
+        Assert.assertTrue(driver.browser().getCurrentUrl().contains("/view_cart"));
+        Assert.assertTrue(driver.get().findElement(productDetailsInCart).isDisplayed());
+        return this;
+    }
+
 
 
     /******************************** Actions ********************************************/
 
+    @Step("clickOnLoginLink")
     public LoginSignupPage clickOnLoginLink(){
         driver.element().click(loginLink);
         return new LoginSignupPage(driver);
     }
 
+    @Step("clickOnLogoutLink")
     public LoginSignupPage clickOnLogoutLink(){
         driver.get().findElement(logoutLink).click();
         return new LoginSignupPage(driver);
     }
 
+    @Step("clickOnDeleteAccountLink")
     public AccountSuccessfulDeletion clickOnDeleteAccountLink(){
         driver.element().click(deleteAccountLink);
         return new AccountSuccessfulDeletion(driver);
     }
 
+    @Step("clickOnContactUsLink")
     public ContactUsPage clickOnContactUsLink(){
         driver.element().click(contactUsLink);
         return new ContactUsPage(driver);
     }
 
+    @Step("clickOnProductLink")
     public ProductPage clickOnProductLink(){
         driver.element().click(productLink);
         return new ProductPage(driver);
     }
 
+    @Step("clickOnTestCasesLink")
     public TestCasesPage clickOnTestCasesLink(){
         driver.element().click(testCasesLink);
         return new TestCasesPage(driver);
     }
 
+    @Step("fillSubscriptionField")
     public Homepage fillSubscriptionField(String email){
         driver.element().fillField(subscriptionField, email);
         return this;
     }
 
+    @Step("clickOnSubscriptionButton")
     public Homepage clickOnSubscriptionButton(){
         driver.element().click(subscriptionButton);
         return this;
     }
 
+    @Step("clickOnCart")
     public Homepage clickOnCart(){
         driver.element().click(cart);
         return this;
     }
 
+    @Step("clickOnViewProduct")
     public Homepage clickOnViewProduct(){
         driver.element().click(viewProduct);
+        return this;
+    }
+
+    @Step("clickOnAddToCartFirstProduct")
+    public Homepage clickOnAddToCartFirstProduct() throws InterruptedException {
+        driver.element().click(addToCartFirstProduct);
+        Thread.sleep(5000);
+        return this;
+    }
+
+    @Step("clickOnContinueShoppingButton")
+    public Homepage clickOnContinueShoppingButton() throws InterruptedException {
+        driver.element().click(continueShoppingButton);
+        Thread.sleep(5000);
         return this;
     }
 
