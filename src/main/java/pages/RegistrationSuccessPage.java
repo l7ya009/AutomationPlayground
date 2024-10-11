@@ -17,6 +17,7 @@ public class RegistrationSuccessPage {
 
     By successMessage = By.xpath("//h2[@data-qa=\"account-created\"]");
     By cartLink = By.xpath("//a[@href=\"/view_cart\"]");
+    By continueButton = By.xpath("//a[@data-qa=\"continue-button\"]");
 
     public RegistrationSuccessPage(Driver driver) {
         this.driver = driver;
@@ -41,6 +42,12 @@ public class RegistrationSuccessPage {
     @Step("clickOnCart")
     public RegistrationSuccessPage clickOnCart(){
         driver.element().click(cartLink);
+        return this;
+    }
+
+    @Step("clickOnContinueButton")
+    public RegistrationSuccessPage clickOnContinueButton(){
+        driver.element().click(continueButton);
         return this;
     }
 

@@ -78,6 +78,13 @@ public class CartPage {
         return this;
     }
 
+    @Step("checkThatProductIsDisplayedInCart")
+    public CartPage checkThatProductIsDisplayedInCart() {
+        Assert.assertTrue(driver.get().findElement(firstProductOnCart).isDisplayed());
+        Assert.assertEquals(driver.element().getTextOf(quantityButtonOnCart),"1");
+        return this;
+    }
+
 
 /*************************          Actions               ***********************/
 

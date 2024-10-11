@@ -28,6 +28,8 @@ public class Homepage {
     By addToCartFirstProduct = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
     By continueShoppingButton = By.xpath("//button[@class=\"btn btn-success close-modal btn-block\"]");
     By productDetailsInCart = By.id("product-1");
+    By signUpLink = By.xpath("//a[@href=\"/login\"]");
+    By loggedInAsUserName = By.xpath("//i[@class=\"fa fa-user\"]");
 
     public Homepage(Driver driver) {
         this.driver = driver;
@@ -82,6 +84,12 @@ public class Homepage {
     public Homepage checkThatCartPageIsDisplayed(){
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("/view_cart"));
         Assert.assertTrue(driver.get().findElement(productDetailsInCart).isDisplayed());
+        return this;
+    }
+
+    @Step("checkThatLoggedInAsUserNameAtTop")
+    public Homepage checkThatLoggedInAsUserNameAtTop(){
+        Assert.assertTrue(driver.get().findElement(loggedInAsUserName).isDisplayed());
         return this;
     }
 
@@ -162,5 +170,12 @@ public class Homepage {
         Thread.sleep(5000);
         return this;
     }
+
+    @Step("clickOnSignUpLink")
+    public Homepage clickOnSignUpLink(){
+        driver.element().click(signUpLink);
+        return this;
+    }
+
 
 }
