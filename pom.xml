@@ -93,7 +93,7 @@
               <!-- disabling default listeners is optional -->
             </property>
             <property>
-              <name>listener</name>
+              <name>listeners</name>
               <value>listeners.testng.TestNGListener</value>
             </property>
           </properties>

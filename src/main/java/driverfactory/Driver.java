@@ -2,10 +2,9 @@ package driverfactory;
 
 import browserActions.BrowserActions;
 import elementactions.ElementActions;
-import listener.webDriver.WebDriverListeners;
+import listeners.webDriver.WebDriverListeners;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
-import org.openqa.selenium.support.events.WebDriverListener;
 
 import static Utilities.properties.PropertiesManager.WebConfig;
 
