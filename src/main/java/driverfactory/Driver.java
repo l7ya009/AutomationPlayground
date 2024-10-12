@@ -10,7 +10,7 @@ import static Utilities.properties.PropertiesManager.WebConfig;
 
 public class Driver {
 
-    private ThreadLocal<WebDriver> driver;
+    public ThreadLocal<WebDriver> driver;
 
     public Driver() {
         String driverType = WebConfig.getProperty("BrowserType");

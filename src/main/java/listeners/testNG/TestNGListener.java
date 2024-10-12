@@ -1,4 +1,4 @@
-package listeners.testNG;
+package listeners.testng;
 
 import Utilities.AllureReportHelper;
 import Utilities.ScreenShotManager;
