@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import pages.*;
 
 public class NewTest {
-Driver driver;
+public Driver driver;
 
 
     @BeforeClass

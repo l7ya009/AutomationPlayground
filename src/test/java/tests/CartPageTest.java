@@ -9,7 +9,7 @@ import pages.Homepage;
 import pages.ProductPage;
 
 public class CartPageTest {
-    Driver driver;
+   public Driver driver;
 
     @BeforeClass
     public void setup() {

@@ -8,7 +8,7 @@ import pages.Homepage;
 import pages.ProductPage;
 
 public class productPageTest {
-    Driver driver;
+  public   Driver driver;
 
     @BeforeClass
     public void setUp() {

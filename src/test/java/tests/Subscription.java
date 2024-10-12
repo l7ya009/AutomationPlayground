@@ -10,7 +10,7 @@ import pages.Homepage;
 import java.time.Duration;
 
 public class Subscription {
-    Driver driver;
+    public Driver driver;
 
     @BeforeClass
 
