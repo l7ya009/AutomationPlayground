@@ -9,7 +9,7 @@ import org.testng.Assert;
 public class CartPage {
     public Driver driver;
 
-    By cartIsEmpty = By.xpath("//p[@class=\"text-center\"]");
+    By cartIsEmpty = By.id("empty_cart");
     By subscription = By.xpath("//h2");
     By subscriptionField = By.id("susbscribe_email");
     By arrow = By.id("subscribe");
@@ -26,6 +26,7 @@ public class CartPage {
     By proceedToCheckOut = By.xpath("//a[@class=\"btn btn-default check_out\"]");
     By continueOnCartButton = By.xpath("//button[@class=\"btn btn-success close-checkout-modal btn-block\"]");
     By signUpLink = By.xpath("(//a[@href=\"/login\"])[1]");
+    By XButton = By.xpath("//i[@class=\"fa fa-times\"]");
 
     public CartPage(Driver driver) {
         this.driver = driver;
@@ -85,6 +86,12 @@ public class CartPage {
         return this;
     }
 
+    @Step("checkThatCartIsEmpty")
+    public CartPage checkThatCartIsEmpty(){
+        Assert.assertEquals(driver.element().getTextOf(cartIsEmpty),"Cart is empty! Click here to buy products.");
+        return this;
+    }
+
 
 /*************************          Actions               ***********************/
 
@@ -117,6 +124,12 @@ public CartPage clickOnContinueOnCart(){
 @Step("clickOnSignUpLink")
 public CartPage clickOnSignUpLink(){
     driver.element().click(signUpLink);
+    return this;
+}
+
+@Step("clickOnXButton")
+public CartPage clickOnXButton(){
+    driver.element().click(XButton);
     return this;
 }
 

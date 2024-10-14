@@ -30,8 +30,8 @@ public Driver driver;
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                             .clickOnLoginLink()
                             .checkThatUserCanNavigateToLoginSignUpPage()
-                            .fillInSignUpName("yehia")
-                            .fillInSignUpEmail("yehiiiiii@yahoo.com")
+                            .fillInSignUpName("yeehia")
+                            .fillInSignUpEmail("yeehia@yahoo.com")
                             .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                             .selectTitle()
@@ -60,7 +60,7 @@ public Driver driver;
     public void userCanLoginSuccessfully(){
         driver.browser().navigateToUrl("https://automationexercise.com/login");
 
-        new LoginSignupPage(driver).fillInLoginEmail("yehiiiiii@yahoo.com")
+        new LoginSignupPage(driver).fillInLoginEmail("yeehia@yahoo.com")
                                    .fillInLoginPassword("12345")
                                    .clickOnLoginButton();
 
@@ -77,8 +77,8 @@ public Driver driver;
 
     @Test(dependsOnMethods ="userCanLogOutSuccessfully",priority = 4)
     public void userCannotRegisterWithExistingEmail(){
-        new LoginSignupPage(driver).fillInSignUpName("yehia")
-                                   .fillInSignUpEmail("yehiiiiii@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yeehia")
+                                   .fillInSignUpEmail("yeehia@yahoo.com")
                                    .clickOnSignUpButton();
 
         new LoginSignupPage(driver).checkThatUserCannotSignUpWithExistingEmail();
@@ -88,7 +88,8 @@ public Driver driver;
     @Test(dependsOnMethods = "userCanLogOutSuccessfully" , priority = 5)
     public void userCanDeleteAccountSuccessfully() {
 
-        new LoginSignupPage(driver).fillInLoginEmail("yehiiiiii@yahoo.com")
+        new LoginSignupPage(driver).checkThatUserCanNavigateToLoginSignUpPage()
+        .fillInLoginEmail("yeehia@yahoo.com")
                                    .fillInLoginPassword("12345")
                                    .clickOnLoginButton();
         new Homepage(driver).checkThatLogOutLinkShouldBeDisplayed()
@@ -106,6 +107,7 @@ public Driver driver;
                                    .clickOnLoginButton()
                                    .checkThatUserCannotLoginWithWrongEmailAndPassword();
     }
+
 
     @AfterClass
     public void tearDown() {
