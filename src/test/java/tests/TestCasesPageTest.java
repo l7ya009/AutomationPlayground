@@ -11,7 +11,7 @@ import pages.LoginSignupPage;
 import pages.TestCasesPage;
 
 public class TestCasesPageTest {
- public    Driver driver;
+ public Driver driver;
 
     @BeforeClass
     public void setUp() {

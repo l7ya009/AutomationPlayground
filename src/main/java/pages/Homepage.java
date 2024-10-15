@@ -30,6 +30,14 @@ public class Homepage {
     By productDetailsInCart = By.id("product-1");
     By signUpLink = By.xpath("//a[@href=\"/login\"]");
     By loggedInAsUserName = By.xpath("//i[@class=\"fa fa-user\"]");
+    By leftSideBar = By.xpath("(//h2)[4]");
+    By categories = By.xpath("//div[@class=\"panel-group category-products\"]");
+    By womenCategory = By.xpath("(//a[@data-toggle=\"collapse\"])[1]");
+    By menCategory = By.xpath("(//a[@data-toggle=\"collapse\"])[2]");
+    By dressCategory = By.xpath("//a[@href=\"/category_products/1\"]");
+    By womenCategoryTitle = By.xpath("//h2[@class=\"title text-center\"]");
+    By jeansCategory = By.xpath("//a[@href=\"/category_products/6\"]");
+    By jeansCategoryTitle = By.xpath("//h2[@class=\"title text-center\"]");
 
     public Homepage(Driver driver) {
         this.driver = driver;
@@ -91,6 +99,29 @@ public class Homepage {
     public Homepage checkThatLoggedInAsUserNameAtTop(){
         Assert.assertTrue(driver.get().findElement(loggedInAsUserName).isDisplayed());
         return this;
+    }
+
+    @Step("checkThatCategoriesAreVisibleOnLeftSideBar")
+    public Homepage checkThatCategoriesAreVisibleOnLeftSideBar() throws InterruptedException {
+        Assert.assertEquals(driver.element().getTextOf(leftSideBar),"CATEGORY");
+        Assert.assertTrue(driver.get().findElement(categories).isDisplayed());
+        Thread.sleep(5000);
+        return this;
+    }
+
+    @Step("checkThatCategoryPageIsDisplayed")
+    public Homepage checkThatCategoryPageIsDisplayed(){
+        Assert.assertTrue(driver.browser().getCurrentUrl().contains("category_products/1"));
+        Assert.assertEquals(driver.element().getTextOf(womenCategoryTitle),"WOMEN -  DRESS PRODUCTS");
+        return this;
+    }
+
+    @Step("checkThatUserNavigatedToJeansPage")
+    public Homepage checkThatUserNavigatedToJeansPage(){
+        Assert.assertTrue(driver.browser().getCurrentUrl().contains("category_products/6"));
+        Assert.assertEquals(driver.element().getTextOf(jeansCategoryTitle),"MEN -  JEANS PRODUCTS");
+        return this;
+
     }
 
 
@@ -176,6 +207,38 @@ public class Homepage {
         driver.element().click(signUpLink);
         return this;
     }
+
+    @Step("clickOnWomenCategory")
+    public Homepage clickOnWomenCategory(){
+        driver.element().click(womenCategory);
+        return this;
+    }
+
+    @Step("clickOnDressCategory")
+    public Homepage clickOnDressCategory(){
+        driver.element().click(dressCategory);
+        return this;
+    }
+
+    @Step("clickOnMenCategory")
+    public Homepage clickOnMenCategory(){
+        driver.element().click(menCategory);
+        return this;
+    }
+
+    @Step("clickOnJeansCategory")
+    public Homepage clickOnJeansCategory(){
+        driver.element().click(jeansCategory);
+        return this;
+    }
+
+    public Homepage scrollToLiftSideBar() throws InterruptedException {
+        driver.element().scrollToElement(leftSideBar);
+        Thread.sleep(5000);
+        return this;
+    }
+
+
 
 
 }

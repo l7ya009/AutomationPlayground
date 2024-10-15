@@ -1,7 +1,6 @@
 package tests;
 
 import driverfactory.Driver;
-import org.openqa.selenium.bidi.module.Browser;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -9,7 +8,7 @@ import pages.Homepage;
 
 import java.time.Duration;
 
-public class Subscription {
+public class SubscriptionTest {
     public Driver driver;
 
     @BeforeClass

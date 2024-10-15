@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.*;
 
-public class PaymentPage {
+public class PaymentPageTest {
    public Driver driver;
 
 
@@ -28,8 +28,8 @@ public class PaymentPage {
         new CartPage(driver).clickOnProceedToCheckOut()
                 .clickOnContinueOnCart()
                 .clickOnSignUpLink();
-        new LoginSignupPage(driver).fillInSignUpName("yehiaaaaa ooosama")
-                .fillInSignUpEmail("yehiaaaaooosama@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yehiaaaaa ooosamaa")
+                .fillInSignUpEmail("yehiaaaaooosamaa@yahoo.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).selectTitle()
                 .fillPassword("12345")
@@ -71,8 +71,8 @@ public class PaymentPage {
     public void checkThatUserCanRegisterSuccessfullyBeforeCheckOut() throws InterruptedException {
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnSignUpLink();
-        new LoginSignupPage(driver).fillInSignUpName("yehiaaaaa ooosama")
-                .fillInSignUpEmail("yehiaaaaooosama@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yehiaaaaa ooosamaa")
+                .fillInSignUpEmail("yehiaaaaooosamaa@yahoo.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                 .selectTitle()
@@ -121,8 +121,8 @@ public class PaymentPage {
     public void checkThatUserCanLoginSuccessfullyBeforeCheckOut() throws InterruptedException {
         driver.browser().deleteAllCookies();
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully().clickOnSignUpLink();
-        new LoginSignupPage(driver).fillInSignUpName("yehiaaaaa ooosama")
-                .fillInSignUpEmail("yehiaaaaooosama@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yehiaaaaa ooosamaa")
+                .fillInSignUpEmail("yehiaaaaooosamaa@yahoo.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                 .selectTitle()
