@@ -37,10 +37,8 @@ public class CartPageTest {
                 .scrollToFirstProduct()
                 .hooverOnFirstProduct()
                 .clickOnAddToCartFirstProduct()
-                .clickOnContinueButton()
                 .hooverOnSecondProduct()
                 .clickOnAddToCartSecondProduct()
-                .clickOnContinueButton()
                 .clickOnCartButton();
         new CartPage(driver).checkThatBothProductsAddedToCart()
                 .checkThatAddedProductsPriceQuantityTotalPriceDisplayed();
@@ -57,6 +55,26 @@ public class CartPageTest {
                 .clickOnContinueButton()
                 .clickOnCartButton();
         new CartPage(driver).checkThatProductIsDisplayedInCartWithExactQuantity();
+    }
+
+    @Test(dependsOnMethods ="checkThatProductsQuantityInCartDisplayed", priority = 4)
+    public void checkThatProductsUserSearchedForAreDisplayedInCartAfterLogin() throws InterruptedException {
+        driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com");
+        new Homepage(driver).clickOnProductLink()
+                .checkThatUserNavigatedToProductPageSuccessfully();
+        new ProductPage(driver).enterProductNameInSearch("jeans")
+                .clickOnSearchButton()
+                .checkThatResultsOfSearchAreVisibleForJeans()
+                .addResultsOfSearchJeansProductsToCart()
+                .clickOnCartButtonInJeansPage();
+        new CartPage(driver).checkThatSelectedJeansItemsAddedToCart()
+                .clickOnSignUpLink()
+                .fillEmailAddressLogin("yehiaosama009@gmail.com")
+                .fillPassWordLogin("12345")
+                .pressOnLoginButton();
+        new Homepage(driver).clickOnCart();
+        new CartPage(driver).checkThatSelectedJeansItemsAddedToCart();
+
     }
 
     @AfterClass

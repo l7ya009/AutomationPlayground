@@ -75,7 +75,7 @@ public Driver driver;
 
     }
 
-    @Test(priority = 4)
+    @Test(dependsOnMethods = "userCanLogOutSuccessfully", priority = 4)
     public void userCannotRegisterWithExistingEmail(){
         new LoginSignupPage(driver).fillInSignUpName("yeehhhia")
                                    .fillInSignUpEmail("yeehhhia@yahoo.com")

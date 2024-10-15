@@ -27,6 +27,13 @@ public class CartPage {
     By continueOnCartButton = By.xpath("//button[@class=\"btn btn-success close-checkout-modal btn-block\"]");
     By signUpLink = By.xpath("(//a[@href=\"/login\"])[1]");
     By XButton = By.xpath("//i[@class=\"fa fa-times\"]");
+    By cartInfoForFirstJeansProduct = By.xpath("//a[@href=\"/product_details/33\"]");
+    By cartInfoForSecondJeansProduct = By.xpath("//a[@href=\"/product_details/37\"]");
+    By cartInfoForThirdJeansProduct = By.xpath("//a[@href=\"/product_details/35\"]");
+
+    By emailAddressLogin = By.name("email");
+    By passWordLogin = By.name("password");
+    By loginButton = By.xpath("//button[@data-qa=\"login-button\"]");
 
     public CartPage(Driver driver) {
         this.driver = driver;
@@ -92,6 +99,14 @@ public class CartPage {
         return this;
     }
 
+    @Step("checkThatSelectedJeansItemsAddedToCart")
+    public CartPage checkThatSelectedJeansItemsAddedToCart(){
+        Assert.assertEquals(driver.element().getTextOf(cartInfoForFirstJeansProduct),"Soft Stretch Jeans");
+        Assert.assertEquals(driver.element().getTextOf(cartInfoForSecondJeansProduct) ,"Grunt Blue Slim Fit Jeans");
+        Assert.assertEquals(driver.element().getTextOf(cartInfoForThirdJeansProduct),"Regular Fit Straight Jeans");
+        return this;
+    }
+
 
 /*************************          Actions               ***********************/
 
@@ -130,6 +145,24 @@ public CartPage clickOnSignUpLink(){
 @Step("clickOnXButton")
 public CartPage clickOnXButton(){
     driver.element().click(XButton);
+    return this;
+}
+
+@Step("fillEmailAddressLogin")
+public CartPage fillEmailAddressLogin(String email){
+    driver.element().fillField(emailAddressLogin,email);
+    return this;
+}
+
+@Step("fillPassWordLogin")
+public CartPage fillPassWordLogin(String password){
+    driver.element().fillField(passWordLogin,password);
+    return this;
+}
+
+@Step("pressOnLoginButton")
+public CartPage pressOnLoginButton(){
+    driver.element().click(loginButton);
     return this;
 }
 

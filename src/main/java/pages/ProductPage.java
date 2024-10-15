@@ -37,6 +37,13 @@ public class ProductPage {
     By poloTitle = By.xpath("//h2[@class=\"title text-center\"]");
     By hmCategory = By.xpath("//a[@href=\"/brand_products/H&M\"]");
     By hmTitle = By.xpath("//h2[@class=\"title text-center\"]");
+    By resultsOfSearchedFirstJeansProducts = By.xpath("(//p)[3]");
+    By resultsOfSearchedSecondJeansProducts = By.xpath("(//p)[5]");
+    By resultsOfSearchedThirdJeansProducts = By.xpath("(//p)[7]");
+    By addToCartFirstJeansProduct = By.xpath("(//a[@data-product-id=\"33\"])[1]");
+    By addToCartSecondJeansProduct= By.xpath("(//a[@data-product-id=\"35\"])[1]");
+    By addToCartThirdJeansProduct =By.xpath("(//a[@data-product-id=\"37\"])[1]");
+    By cartButtonInJeansPage = By.xpath("//i[@class=\"fa fa-shopping-cart\"]");
 
     public ProductPage(Driver driver) {
         this.driver = driver;
@@ -102,9 +109,17 @@ public class ProductPage {
 
     @Step("checkThatUserNavigatedToHm")
     public ProductPage checkThatUserNavigatedToHm(){
-        Assert.assertEquals(driver.element().getTextOf(poloTitle),"BRAND - H&M PRODUCTS");
+        Assert.assertEquals(driver.element().getTextOf(hmTitle),"BRAND - H&M PRODUCTS");
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("brand_products/H&M"));
         return this;
+    }
+
+    @Step("checkThatResultsOfSearchAreVisibleForJeans")
+    public ProductPage checkThatResultsOfSearchAreVisibleForJeans(){
+        Assert.assertEquals(driver.element().getTextOf(resultsOfSearchedFirstJeansProducts),"Soft Stretch Jeans");
+        Assert.assertEquals(driver.element().getTextOf(resultsOfSearchedSecondJeansProducts),"Regular Fit Straight Jeans");
+        Assert.assertEquals(driver.element().getTextOf(resultsOfSearchedThirdJeansProducts),"Grunt Blue Slim Fit Jeans");
+    return this;
     }
 
 
@@ -144,6 +159,8 @@ public class ProductPage {
     public ProductPage clickOnAddToCartFirstProduct() throws InterruptedException {
         driver.element().click(addToCartFirstProduct);
         Thread.sleep(5000);
+        driver.element().click(continueShoppingButton);
+        Thread.sleep(5000);
         return this;
     }
 
@@ -157,6 +174,8 @@ public class ProductPage {
     public ProductPage clickOnAddToCartSecondProduct() throws InterruptedException {
         driver.element().click(addToCartSecondProduct);
         Thread.sleep(5000);
+        driver.element().click(continueShoppingButton);
+        Thread.sleep(5000);
         return this;
     }
 
@@ -169,6 +188,29 @@ public class ProductPage {
     @Step("clickOnHmCategory")
     public ProductPage clickOnHmCategory(){
         driver.element().click(hmCategory);
+        return this;
+    }
+
+    @Step("addResultsOfSearchJeansProductsToCart")
+    public ProductPage addResultsOfSearchJeansProductsToCart() throws InterruptedException {
+        driver.element().click(addToCartFirstJeansProduct);
+        Thread.sleep(5000);
+        driver.element().click(continueShoppingButton);
+        Thread.sleep(5000);
+        driver.element().click(addToCartSecondJeansProduct);
+        Thread.sleep(5000);
+        driver.element().click(continueShoppingButton);
+        Thread.sleep(5000);
+        driver.element().click(addToCartThirdJeansProduct);
+        Thread.sleep(5000);
+        driver.element().click(continueShoppingButton);
+        Thread.sleep(5000);
+        return this;
+    }
+
+    @Step("clickOnCartButtonInJeansPage")
+    public ProductPage clickOnCartButtonInJeansPage(){
+        driver.element().click(cartButtonInJeansPage);
         return this;
     }
 

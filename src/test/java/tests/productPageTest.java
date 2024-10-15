@@ -54,8 +54,9 @@ public class productPageTest {
                 .checkThatUserNavigatedToPolo()
                 .clickOnHmCategory()
                 .checkThatUserNavigatedToHm();
-
     }
+
+
 
 
     @AfterClass
