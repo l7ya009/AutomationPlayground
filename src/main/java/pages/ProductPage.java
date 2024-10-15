@@ -32,6 +32,11 @@ public class ProductPage {
     By productDetails = By.xpath("//div[@class=\"col-sm-9 padding-right\"]");
     By quantity = By.id("quantity");
     By addToCartButton = By.xpath("//button[@class=\"btn btn-default cart\"]");
+    By brandCategory = By.xpath("//div[@class=\"brands_products\"]");
+    By poloCategory = By.xpath("//a[@href=\"/brand_products/Polo\"]");
+    By poloTitle = By.xpath("//h2[@class=\"title text-center\"]");
+    By hmCategory = By.xpath("//a[@href=\"/brand_products/H&M\"]");
+    By hmTitle = By.xpath("//h2[@class=\"title text-center\"]");
 
     public ProductPage(Driver driver) {
         this.driver = driver;
@@ -79,6 +84,26 @@ public class ProductPage {
     @Step("checkThatSelectedProductDetailsDisplayed")
     public ProductPage checkThatSelectedProductDetailsDisplayed(){
         Assert.assertTrue(driver.get().findElement(productDetails).isDisplayed());
+        return this;
+    }
+
+    @Step("checkThatBrandsAreVisibleOnLeftSideBar")
+    public ProductPage checkThatBrandsAreVisibleOnLeftSideBar(){
+        Assert.assertTrue(driver.get().findElement(brandCategory).isDisplayed());
+        return this;
+    }
+
+    @Step("checkThatUserNavigatedToPolo")
+    public ProductPage checkThatUserNavigatedToPolo(){
+        Assert.assertEquals(driver.element().getTextOf(poloTitle),"BRAND -  POLO PRODUCTS");
+        Assert.assertTrue(driver.browser().getCurrentUrl().contains("brand_products/Polo"));
+        return this;
+    }
+
+    @Step("checkThatUserNavigatedToHm")
+    public ProductPage checkThatUserNavigatedToHm(){
+        Assert.assertEquals(driver.element().getTextOf(poloTitle),"BRAND - H&M PRODUCTS");
+        Assert.assertTrue(driver.browser().getCurrentUrl().contains("brand_products/H&M"));
         return this;
     }
 
@@ -132,6 +157,18 @@ public class ProductPage {
     public ProductPage clickOnAddToCartSecondProduct() throws InterruptedException {
         driver.element().click(addToCartSecondProduct);
         Thread.sleep(5000);
+        return this;
+    }
+
+    @Step("clickOnPoloCategory")
+    public ProductPage clickOnPoloCategory(){
+        driver.element().click(poloCategory);
+        return this;
+    }
+
+    @Step("clickOnHmCategory")
+    public ProductPage clickOnHmCategory(){
+        driver.element().click(hmCategory);
         return this;
     }
 

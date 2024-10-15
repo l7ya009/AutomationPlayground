@@ -20,8 +20,6 @@ public class productPageTest {
 
     @Test(priority = 1)
     public void productPageDisplayed() {
-
-
         new Homepage(driver).clickOnProductLink()
                         .checkThatUserNavigatedToProductPageSuccessfully()
                         .checkThatAllProductsDisplayed()
@@ -43,6 +41,20 @@ public class productPageTest {
         new ProductPage(driver).enterProductNameInSearch("polo").
                 clickOnSearchButton()
                 .checkThatPoloProductDisplayed();
+    }
+
+    @Test(dependsOnMethods = "poloProductDesplayed", priority = 4)
+    public void checkThatUserCanNavigatedToOtherBrandPage(){
+        driver.browser().navigateToUrl("http://automationexercise.com/");
+        new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
+                .clickOnProductLink()
+                .checkThatUserNavigatedToProductPageSuccessfully();
+        new ProductPage(driver).checkThatBrandsAreVisibleOnLeftSideBar()
+                .clickOnPoloCategory()
+                .checkThatUserNavigatedToPolo()
+                .clickOnHmCategory()
+                .checkThatUserNavigatedToHm();
+
     }
 
 

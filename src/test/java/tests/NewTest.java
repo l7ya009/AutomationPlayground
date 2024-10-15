@@ -30,8 +30,8 @@ public Driver driver;
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                             .clickOnLoginLink()
                             .checkThatUserCanNavigateToLoginSignUpPage()
-                            .fillInSignUpName("yeehia")
-                            .fillInSignUpEmail("yeehia@yahoo.com")
+                            .fillInSignUpName("yeehhhia")
+                            .fillInSignUpEmail("yeehhhia@yahoo.com")
                             .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                             .selectTitle()
@@ -60,7 +60,7 @@ public Driver driver;
     public void userCanLoginSuccessfully(){
         driver.browser().navigateToUrl("https://automationexercise.com/login");
 
-        new LoginSignupPage(driver).fillInLoginEmail("yeehia@yahoo.com")
+        new LoginSignupPage(driver).fillInLoginEmail("yeehhhia@yahoo.com")
                                    .fillInLoginPassword("12345")
                                    .clickOnLoginButton();
 
@@ -75,12 +75,11 @@ public Driver driver;
 
     }
 
-    @Test(dependsOnMethods ="userCanLogOutSuccessfully",priority = 4)
+    @Test(priority = 4)
     public void userCannotRegisterWithExistingEmail(){
-        new LoginSignupPage(driver).fillInSignUpName("yeehia")
-                                   .fillInSignUpEmail("yeehia@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yeehhhia")
+                                   .fillInSignUpEmail("yeehhhia@yahoo.com")
                                    .clickOnSignUpButton();
-
         new LoginSignupPage(driver).checkThatUserCannotSignUpWithExistingEmail();
 
     }
@@ -89,7 +88,7 @@ public Driver driver;
     public void userCanDeleteAccountSuccessfully() {
 
         new LoginSignupPage(driver).checkThatUserCanNavigateToLoginSignUpPage()
-        .fillInLoginEmail("yeehia@yahoo.com")
+        .fillInLoginEmail("yeehhhia@yahoo.com")
                                    .fillInLoginPassword("12345")
                                    .clickOnLoginButton();
         new Homepage(driver).checkThatLogOutLinkShouldBeDisplayed()
