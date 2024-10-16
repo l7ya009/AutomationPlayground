@@ -3,10 +3,13 @@ package listeners.testng;
 import Utilities.AllureReportHelper;
 import Utilities.ScreenShotManager;
 import driverfactory.Driver;
+import io.qameta.allure.Allure;
+import org.apache.commons.io.FileUtils;
 import org.testng.IExecutionListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
@@ -54,6 +57,7 @@ public class TestNGListener implements ITestListener, IExecutionListener {
         System.out.println("Test Failed");
         System.out.println("Taking screen shot.....");
 
+
         Driver driver = null;
         ThreadLocal<Driver> driverThreadLocal;
         Object currentClass = result.getInstance();
@@ -76,6 +80,16 @@ public class TestNGListener implements ITestListener, IExecutionListener {
 
         assert driver != null;
         ScreenShotManager.captureScreenshot(driver.get(), result.getName());
+
+        String fullPath = System.getProperty("user.dir") + result.getName();
+
+        try {
+            Allure.addAttachment(result.getMethod().getConstructorOrMethod().getName(),
+                    FileUtils.openInputStream(new File(fullPath)));
+        } catch (IOException e) {
+            System.out.println("Attachment isn't Found");
+
+        }
 
 
         System.out.println("******* Failure of Test: " + result.getName() + " ***************");
