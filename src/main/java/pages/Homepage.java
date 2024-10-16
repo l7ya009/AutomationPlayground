@@ -38,6 +38,9 @@ public class Homepage {
     By womenCategoryTitle = By.xpath("//h2[@class=\"title text-center\"]");
     By jeansCategory = By.xpath("//a[@href=\"/category_products/6\"]");
     By jeansCategoryTitle = By.xpath("//h2[@class=\"title text-center\"]");
+    By recommendedItems = By.xpath("//div[@class=\"recommended_items\"]");
+    By recommendedItemsTitle = By.xpath("(//h2[@class=\"title text-center\"])[2]");
+    By productFromRecommendedProducts = By.xpath("(//a[@data-product-id=\"4\"])[3]");
 
     public Homepage(Driver driver) {
         this.driver = driver;
@@ -122,6 +125,12 @@ public class Homepage {
         Assert.assertEquals(driver.element().getTextOf(jeansCategoryTitle),"MEN -  JEANS PRODUCTS");
         return this;
 
+    }
+
+    public Homepage checkThatRecommendedItemsAreDisplayed(){
+        Assert.assertTrue(driver.get().findElement(recommendedItems).isDisplayed());
+        Assert.assertEquals(driver.element().getTextOf(recommendedItemsTitle),"RECOMMENDED ITEMS");
+        return this;
     }
 
 
@@ -232,12 +241,18 @@ public class Homepage {
         return this;
     }
 
+    @Step("scrollToLiftSideBar")
     public Homepage scrollToLiftSideBar() throws InterruptedException {
         driver.element().scrollToElement(leftSideBar);
         Thread.sleep(5000);
         return this;
     }
 
+    public Homepage addProductFormRecommendedProducts() throws InterruptedException {
+        driver.element().click(productFromRecommendedProducts);
+        Thread.sleep(5000);
+        return this;
+    }
 
 
 

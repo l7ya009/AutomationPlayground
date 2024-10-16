@@ -77,6 +77,18 @@ public class CartPageTest {
 
     }
 
+    @Test(dependsOnMethods = "checkThatProductsUserSearchedForAreDisplayedInCartAfterLogin", priority = 5)
+    public void checkThatUserCanAddItemsFormRecommendedItemsToCartSuccessfully() throws InterruptedException {
+        driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com")
+                .scrollToBottom();
+        new Homepage(driver).checkThatRecommendedItemsAreDisplayed()
+                .addProductFormRecommendedProducts()
+                .clickOnContinueShoppingButton()
+                .clickOnCart();
+        new CartPage(driver).checkThatRecommendedProductAddToCartIsDisplayedInCartSuccessfully();
+
+    }
+
     @AfterClass
     public void tearDown() {
         driver.browser().deleteAllCookies();

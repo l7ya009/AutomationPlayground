@@ -30,6 +30,7 @@ public class CartPage {
     By cartInfoForFirstJeansProduct = By.xpath("//a[@href=\"/product_details/33\"]");
     By cartInfoForSecondJeansProduct = By.xpath("//a[@href=\"/product_details/37\"]");
     By cartInfoForThirdJeansProduct = By.xpath("//a[@href=\"/product_details/35\"]");
+    By recommendedProductInCart = By.xpath("//a[@href=\"/product_details/4\"]");
 
     By emailAddressLogin = By.name("email");
     By passWordLogin = By.name("password");
@@ -104,6 +105,11 @@ public class CartPage {
         Assert.assertEquals(driver.element().getTextOf(cartInfoForFirstJeansProduct),"Soft Stretch Jeans");
         Assert.assertEquals(driver.element().getTextOf(cartInfoForSecondJeansProduct) ,"Grunt Blue Slim Fit Jeans");
         Assert.assertEquals(driver.element().getTextOf(cartInfoForThirdJeansProduct),"Regular Fit Straight Jeans");
+        return this;
+    }
+
+    public CartPage checkThatRecommendedProductAddToCartIsDisplayedInCartSuccessfully(){
+        Assert.assertEquals(driver.element().getTextOf(recommendedProductInCart),"Stylish Dress");
         return this;
     }
 
