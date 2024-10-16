@@ -56,7 +56,21 @@ public class productPageTest {
                 .checkThatUserNavigatedToHm();
     }
 
+    @Test(dependsOnMethods = "checkThatUserCanNavigatedToOtherBrandPage", priority = 5)
+    public void checkThatUserCanWriteReviewSuccessfully(){
+        driver.browser().deleteAllCookies().navigateToUrl("http://automationexercise.com/");
+        new Homepage(driver).clickOnProductLink()
+                .checkThatUserNavigatedToProductPageSuccessfully()
+                .clickOnViewProductButton()
+                .checkThatProductDetailsDisplayed()
+                .checkThatReviewFormisDisplayed()
+                .fillReviewFormName("yehia")
+                .fillReviewFormEmail("yehiaosama009@gmail.com")
+                .fillReviewFormContent("Thank You")
+                .clickOnSubmitReviewButton()
+                .checkThatReviewSubmittedSuccessMessageDisplayed();
 
+    }
 
 
     @AfterClass

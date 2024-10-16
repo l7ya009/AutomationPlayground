@@ -44,6 +44,12 @@ public class ProductPage {
     By addToCartSecondJeansProduct= By.xpath("(//a[@data-product-id=\"35\"])[1]");
     By addToCartThirdJeansProduct =By.xpath("(//a[@data-product-id=\"37\"])[1]");
     By cartButtonInJeansPage = By.xpath("//i[@class=\"fa fa-shopping-cart\"]");
+    By reviewForm = By.id("review-form");
+    By reviewFormName = By.id("name");
+    By reviewFormEmail = By.id("email");
+    By reviewContent = By.id("review");
+    By submitReviewButton = By.id("button-review");
+    By reviewSuccessMessage = By.xpath("(//div[@class=\"alert-success alert\"])[1]");
 
     public ProductPage(Driver driver) {
         this.driver = driver;
@@ -122,6 +128,17 @@ public class ProductPage {
     return this;
     }
 
+    @Step("checkThatReviewFormisDisplayed")
+    public ProductPage checkThatReviewFormisDisplayed(){
+        Assert.assertTrue(driver.get().findElement(reviewForm).isDisplayed());
+        return this;
+    }
+
+    @Step("checkThatReviewSubmittedSuccessMessageDisplayed")
+    public ProductPage checkThatReviewSubmittedSuccessMessageDisplayed(){
+        Assert.assertEquals(driver.element().getTextOf(reviewSuccessMessage),"Thank you for your review.");
+        return this;
+    }
 
     /******************************* Actions *******************************************/
 
@@ -213,6 +230,32 @@ public class ProductPage {
         driver.element().click(cartButtonInJeansPage);
         return this;
     }
+
+    @Step("fillReviewFormName")
+    public ProductPage fillReviewFormName(String name){
+        driver.element().fillField(reviewFormName, name);
+        return this;
+    }
+
+    @Step("fillReviewFormEmail")
+    public ProductPage fillReviewFormEmail(String email){
+        driver.element().fillField(reviewFormEmail, email);
+        return this;
+    }
+
+    @Step("fillReviewFormContent")
+    public ProductPage fillReviewFormContent(String review){
+        driver.element().fillField(reviewContent, review);
+        return this;
+    }
+
+    @Step("clickOnSubmitReviewButton")
+    public ProductPage clickOnSubmitReviewButton(){
+        driver.element().click(submitReviewButton);
+        return this;
+    }
+
+
 
 //    public ProductPage hooverAndClickOnAddToCartFirstProduct() {
 //        driver.element().hoverOnItem(firstProductHoverLink).click(addToCartFirstProduct);
