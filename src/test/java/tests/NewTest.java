@@ -30,8 +30,8 @@ public Driver driver;
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                             .clickOnLoginLink()
                             .checkThatUserCanNavigateToLoginSignUpPage()
-                            .fillInSignUpName("yeehhhia")
-                            .fillInSignUpEmail("yeehhhia@yahoo.com")
+                            .fillInSignUpName("yeehhhiia")
+                            .fillInSignUpEmail("yeehhhiia@yahoo.com")
                             .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                             .selectTitle()
@@ -60,7 +60,7 @@ public Driver driver;
     public void userCanLoginSuccessfully(){
         driver.browser().navigateToUrl("https://automationexercise.com/login");
 
-        new LoginSignupPage(driver).fillInLoginEmail("yeehhhia@yahoo.com")
+        new LoginSignupPage(driver).fillInLoginEmail("yeehhhiia@yahoo.com")
                                    .fillInLoginPassword("12345")
                                    .clickOnLoginButton();
 
@@ -75,20 +75,22 @@ public Driver driver;
 
     }
 
-    @Test(dependsOnMethods = "userCanLogOutSuccessfully", priority = 4)
+    @Test( priority = 4)
     public void userCannotRegisterWithExistingEmail(){
-        new LoginSignupPage(driver).fillInSignUpName("yeehhhia")
-                                   .fillInSignUpEmail("yeehhhia@yahoo.com")
+        driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com/login");
+        new LoginSignupPage(driver).fillInSignUpName("yeehhhiia")
+                                   .fillInSignUpEmail("yeehhhiia@yahoo.com")
                                    .clickOnSignUpButton();
         new LoginSignupPage(driver).checkThatUserCannotSignUpWithExistingEmail();
 
     }
 
-    @Test(dependsOnMethods = "userCanLogOutSuccessfully" , priority = 5)
+    @Test(priority = 5)
     public void userCanDeleteAccountSuccessfully() {
 
+        driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com/login");
         new LoginSignupPage(driver).checkThatUserCanNavigateToLoginSignUpPage()
-        .fillInLoginEmail("yeehhhia@yahoo.com")
+        .fillInLoginEmail("yeehhhiia@yahoo.com")
                                    .fillInLoginPassword("12345")
                                    .clickOnLoginButton();
         new Homepage(driver).checkThatLogOutLinkShouldBeDisplayed()
