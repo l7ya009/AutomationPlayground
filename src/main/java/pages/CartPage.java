@@ -104,7 +104,7 @@ public class CartPage {
     public CartPage checkThatSelectedJeansItemsAddedToCart(){
         Assert.assertEquals(driver.element().getTextOf(cartInfoForFirstJeansProduct),"Soft Stretch Jeans");
         Assert.assertEquals(driver.element().getTextOf(cartInfoForSecondJeansProduct) ,"Grunt Blue Slim Fit Jeans");
-        Assert.assertEquals(driver.element().getTextOf(cartInfoForThirdJeansProduct),"Regular Fit Straight Jeans");
+        Assert.assertEquals(driver.element().getTextOf(cartInfoForThirdJeansProduct)," Regular Fit Straight Jeans");
         return this;
     }
 
