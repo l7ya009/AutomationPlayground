@@ -124,14 +124,14 @@ public class Homepage {
     @Step("checkThatUserNavigatedToJeansPage")
     public Homepage checkThatUserNavigatedToJeansPage(){
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("category_products/6"));
-        Assert.assertEquals(driver.element().getTextOf(jeansCategoryTitle),"MEN - JEANS PRODUCTS");
+        Assert.assertEquals(driver.element().getTextOf(jeansCategoryTitle),"MEN -  JEANS PRODUCTS");
         return this;
     }
 
 @Step("checkThatRecommendedItemsAreDisplayed")
     public Homepage checkThatRecommendedItemsAreDisplayed(){
         Assert.assertTrue(driver.get().findElement(recommendedItems).isDisplayed());
-        Assert.assertEquals(driver.element().getTextOf(AutomationExerciseTitle),"RECOMMENDED ITEMS");
+        Assert.assertEquals(driver.element().getTextOf(recommendedItemsTitle),"RECOMMENDED ITEMS");
         return this;
     }
 
