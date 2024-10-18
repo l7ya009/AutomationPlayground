@@ -19,6 +19,7 @@ public class PaymentPage {
     By deleteAccount = By.xpath("//a[@href=\"/delete_account\"]");
     By accountDeletedMessage = By.xpath("(//b)[1]");
     By continueButton = By.xpath("//a[@data-qa=\"continue-button\"]");
+    By downloadInVoiceButton = By.xpath("//a[@class=\"btn btn-default check_out\"]");
 
 
 
@@ -97,6 +98,11 @@ public class PaymentPage {
         @Step("clickOnContinueButton")
         public PaymentPage clickOnContinueButton(){
             driver.element().click(continueButton);
+            return this;
+        }
+
+        public PaymentPage clickOnDownloadInvoiceButton(){
+            driver.element().click(downloadInVoiceButton);
             return this;
         }
 

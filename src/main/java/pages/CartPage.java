@@ -26,6 +26,7 @@ public class CartPage {
     By proceedToCheckOut = By.xpath("//a[@class=\"btn btn-default check_out\"]");
     By continueOnCartButton = By.xpath("//button[@class=\"btn btn-success close-checkout-modal btn-block\"]");
     By signUpLink = By.xpath("(//a[@href=\"/login\"])[1]");
+    By signUpFromCheckOutBox = By.xpath("(//a[@href=\"/login\"])[2]");
     By XButton = By.xpath("//i[@class=\"fa fa-times\"]");
     By cartInfoForFirstJeansProduct = By.xpath("//a[@href=\"/product_details/33\"]");
     By cartInfoForSecondJeansProduct = By.xpath("//a[@href=\"/product_details/37\"]");
@@ -172,5 +173,13 @@ public CartPage pressOnLoginButton(){
     driver.element().click(loginButton);
     return this;
 }
+
+public CartPage clickOnSignUpFromCheckOutBox() throws InterruptedException {
+    driver.element().click(signUpFromCheckOutBox);
+    Thread.sleep(5000);
+    return this;
+}
+
+
 
 }

@@ -41,6 +41,8 @@ public class Homepage {
     By recommendedItems = By.xpath("//div[@class=\"recommended_items\"]");
     By recommendedItemsTitle = By.xpath("(//h2[@class=\"title text-center\"])[2]");
     By productFromRecommendedProducts = By.xpath("(//a[@data-product-id=\"4\"])[3]");
+    By fullFledgedTitle = By.xpath("(//h2)[1]");
+    By AutomationExerciseTitle = By.xpath("//img[@src=\"/static/images/home/logo.png\"]");
 
     public Homepage(Driver driver) {
         this.driver = driver;
@@ -124,12 +126,26 @@ public class Homepage {
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("category_products/6"));
         Assert.assertEquals(driver.element().getTextOf(jeansCategoryTitle),"MEN -  JEANS PRODUCTS");
         return this;
-
     }
 
+@Step("checkThatRecommendedItemsAreDisplayed")
     public Homepage checkThatRecommendedItemsAreDisplayed(){
         Assert.assertTrue(driver.get().findElement(recommendedItems).isDisplayed());
-        Assert.assertEquals(driver.element().getTextOf(recommendedItemsTitle),"RECOMMENDED ITEMS");
+        Assert.assertEquals(driver.element().getTextOf(AutomationExerciseTitle),"RECOMMENDED ITEMS");
+        return this;
+    }
+
+    @Step("checkThatFullFledgedTitleIsDisplayed")
+    public Homepage checkThatFullFledgedTitleIsDisplayed() throws InterruptedException {
+        Assert.assertEquals(driver.element().getTextOf(fullFledgedTitle),"Full-Fledged practice website for Automation Engineers");
+        Thread.sleep(5000);
+        return this;
+    }
+
+    @Step("checkThatAutomationExerciseLogoIsDisplayed")
+    public Homepage checkThatAutomationExerciseLogoIsDisplayed() throws InterruptedException {
+        Assert.assertTrue(driver.get().findElement(AutomationExerciseTitle).isDisplayed());
+        Thread.sleep(5000);
         return this;
     }
 
@@ -252,11 +268,28 @@ public class Homepage {
         return this;
     }
 
+    @Step("addProductFormRecommendedProducts")
     public Homepage addProductFormRecommendedProducts() throws InterruptedException {
         driver.element().click(productFromRecommendedProducts);
         Thread.sleep(5000);
         return this;
     }
+
+    @Step("scrollDown")
+    public Homepage scrollDown() throws InterruptedException {
+        driver.browser().scrollToBottom();
+        Thread.sleep(5000);
+        return this;
+    }
+
+    @Step("scrollUp")
+    public Homepage scrollUp() throws InterruptedException {
+        driver.browser().scrollToUpper();
+        Thread.sleep(5000);
+        return this;
+    }
+
+
 
 
 

@@ -121,8 +121,8 @@ public class PaymentPageTest {
     public void checkThatUserCanLoginSuccessfullyBeforeCheckOut() throws InterruptedException {
         driver.browser().deleteAllCookies();
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully().clickOnSignUpLink();
-        new LoginSignupPage(driver).fillInSignUpName("yehhhyya ooosamaaaa")
-                .fillInSignUpEmail("yehaaaaooossamaaaaaa@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yehhhyyaa ooosamaaaa")
+                .fillInSignUpEmail("yehaaaaooossamaaaaaaa@yahoo.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                 .selectTitle()
@@ -146,7 +146,7 @@ public class PaymentPageTest {
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnLogoutLink();
         new LoginSignupPage(driver).checkThatUserCanNavigateToLoginSignUpPage()
-                .fillInLoginEmail("yehaaaaooossamaaaaaa@yahoo.com")
+                .fillInLoginEmail("yehaaaaooossamaaaaaaa@yahoo.com")
                 .fillInLoginPassword("12345")
                 .clickOnLoginButton();
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
@@ -159,7 +159,7 @@ public class PaymentPageTest {
         new CheckOutPage(driver).checkThatAddressDetailsAndOrderDetailsDisplayed()
                 .fillCommentField("description")
                 .clickOnPlaceOrderButton();
-        new pages.PaymentPage(driver).checkThatUserNavigatedToPaymentPage()
+        new PaymentPage(driver).checkThatUserNavigatedToPaymentPage()
                 .fillNameOnCard("yehia")
                 .fillCardNumber("15425213213212")
                 .fillCvc("243")
@@ -183,6 +183,62 @@ public class PaymentPageTest {
         Thread.sleep(5000);
                 new CartPage(driver).checkThatCartIsEmpty();
         Thread.sleep(5000);
+
+    }
+
+    @Test(dependsOnMethods = "checkThatUserCanRemoveProductFromCart", priority = 5)
+    public void checkThatUserCanDownloadInvoiceAfterPurchase() throws InterruptedException {
+        driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com");
+        new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
+                .clickOnAddToCartFirstProduct()
+                .clickOnContinueShoppingButton()
+                .clickOnCart()
+                .checkThatCartPageIsDisplayed();
+        new CartPage(driver).clickOnProceedToCheckOut()
+                .clickOnSignUpFromCheckOutBox();
+        new LoginSignupPage(driver).fillInSignUpName("yyyehia")
+                .fillInSignUpEmail("yyyehia@yahoo.com")
+                .clickOnSignUpButton();
+        new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
+                .selectTitle()
+                .fillPassword("12345")
+                .fillDayOfBirth()
+                .fillMonthOfBirth()
+                .fillYearOfBirth()
+                .fillFirstName("yehia")
+                .fillLastName("osama")
+                .fillCompany("testing")
+                .fillAddress1("gamal abdl nasser")
+                .fillAddress2("miami")
+                .fillCountry()
+                .fillState("california")
+                .fillCity("alexandria")
+                .fillZipCode("54371")
+                .fillMobileNumber("01115667781")
+                .clickCreateAccountButton()
+                .checkThatSuccessMessageShouldBeDisplayed()
+                .clickOnContinueButton();
+        new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
+                .checkThatLoggedInAsUserNameAtTop()
+                .clickOnCart();
+        new CartPage(driver).clickOnProceedToCheckOut();
+        new CheckOutPage(driver).checkThatAddressDetailsAndOrderDetailsDisplayed()
+                .fillCommentField("good")
+                .clickOnPlaceOrderButton();
+        new PaymentPage(driver).checkThatUserNavigatedToPaymentPage()
+                .fillNameOnCard("yehia")
+                .fillCardNumber("15425213213212")
+                .fillCvc("243")
+                .fillExpirationMonth("10")
+                .fillExpirationYear("2026")
+                .clickOnPayAndConfirmButton()
+                .checkThatOrderPlacedAndConfirmedSuccessfully()
+                .clickOnDownloadInvoiceButton()
+                .clickOnDeleteAccount()
+                .checkThatAccountDeletedSuccessfully()
+                .clickOnContinueButton();
+        new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully();
+
 
     }
 
