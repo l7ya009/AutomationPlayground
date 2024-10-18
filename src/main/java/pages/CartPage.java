@@ -174,6 +174,7 @@ public CartPage pressOnLoginButton(){
     return this;
 }
 
+@Step("clickOnSignUpFromCheckOutBox")
 public CartPage clickOnSignUpFromCheckOutBox() throws InterruptedException {
     driver.element().click(signUpFromCheckOutBox);
     Thread.sleep(5000);

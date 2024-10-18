@@ -101,6 +101,7 @@ public class PaymentPage {
             return this;
         }
 
+        @Step("clickOnDownloadInvoiceButton")
         public PaymentPage clickOnDownloadInvoiceButton(){
             driver.element().click(downloadInVoiceButton);
             return this;
