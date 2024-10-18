@@ -123,7 +123,7 @@ public class ProductPage {
     @Step("checkThatResultsOfSearchAreVisibleForJeans")
     public ProductPage checkThatResultsOfSearchAreVisibleForJeans(){
         Assert.assertEquals(driver.element().getTextOf(resultsOfSearchedFirstJeansProducts), "Soft Stretch Jeans");
-        Assert.assertEquals(driver.element().getTextOf(resultsOfSearchedSecondJeansProducts)," Regular Fit Straight JeansRegular Fit Straight Jeans");
+        Assert.assertEquals(driver.element().getTextOf(resultsOfSearchedSecondJeansProducts),"Regular Fit Straight Jeans");
         Assert.assertEquals(driver.element().getTextOf(resultsOfSearchedThirdJeansProducts),"Grunt Blue Slim Fit Jeans");
     return this;
     }

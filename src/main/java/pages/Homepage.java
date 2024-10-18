@@ -124,7 +124,7 @@ public class Homepage {
     @Step("checkThatUserNavigatedToJeansPage")
     public Homepage checkThatUserNavigatedToJeansPage(){
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("category_products/6"));
-        Assert.assertEquals(driver.element().getTextOf(jeansCategoryTitle),"MEN -  JEANS PRODUCTS");
+        Assert.assertEquals(driver.element().getTextOf(jeansCategoryTitle),"MEN - JEANS PRODUCTS");
         return this;
     }
 
