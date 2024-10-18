@@ -77,7 +77,7 @@ public class CartPageTest {
 
     }
 
-    @Test(dependsOnMethods = "checkThatProductsUserSearchedForAreDisplayedInCartAfterLogin", priority = 5)
+    @Test(priority = 5)
     public void checkThatUserCanAddItemsFormRecommendedItemsToCartSuccessfully() throws InterruptedException {
         driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com")
                 .scrollToBottom();
