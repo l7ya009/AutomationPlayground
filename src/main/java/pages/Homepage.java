@@ -218,26 +218,30 @@ public class Homepage {
     }
 
     @Step("clickOnWomenCategory")
-    public Homepage clickOnWomenCategory(){
+    public Homepage clickOnWomenCategory() throws InterruptedException {
         driver.element().click(womenCategory);
+        Thread.sleep(5000);
         return this;
     }
 
     @Step("clickOnDressCategory")
-    public Homepage clickOnDressCategory(){
+    public Homepage clickOnDressCategory() throws InterruptedException {
         driver.element().click(dressCategory);
+        Thread.sleep(5000);
         return this;
     }
 
     @Step("clickOnMenCategory")
-    public Homepage clickOnMenCategory(){
+    public Homepage clickOnMenCategory() throws InterruptedException {
         driver.element().click(menCategory);
+        Thread.sleep(5000);
         return this;
     }
 
     @Step("clickOnJeansCategory")
-    public Homepage clickOnJeansCategory(){
+    public Homepage clickOnJeansCategory() throws InterruptedException {
         driver.element().click(jeansCategory);
+        Thread.sleep(5000);
         return this;
     }
 

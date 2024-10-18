@@ -33,11 +33,13 @@ public class CheckOutPage {
         return this;
     }
 
+    @Step("checkThatDeliveryAddressIsShownAsEnteredInRegistration")
     public CheckOutPage checkThatDeliveryAddressIsShownAsEnteredInRegistration(){
         Assert.assertEquals(driver.element().getTextOf(deliveryAddressShown),"alexandria egypt 54371");
         return this;
     }
 
+    @Step("checkThatBillingAddressIsShownAsEnteredInRegistration")
     public CheckOutPage checkThatBillingAddressIsShownAsEnteredInRegistration(){
         Assert.assertEquals(driver.element().getTextOf(billingAddressShown),"alexandria egypt 54371");
         return this;
