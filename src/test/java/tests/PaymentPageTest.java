@@ -67,8 +67,9 @@ public class PaymentPageTest {
 
     }
 
-    @Test (dependsOnMethods = "checkThatUserCanRegisterSuccessfullyWhileCheckOut", priority = 2)
+    @Test ( priority = 2)
     public void checkThatUserCanRegisterSuccessfullyBeforeCheckOut() throws InterruptedException {
+        driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com");
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnSignUpLink();
         new LoginSignupPage(driver).fillInSignUpName("yehhhiiiiaaaaaaaa ooosamaaaa")
@@ -117,12 +118,12 @@ public class PaymentPageTest {
                 .clickOnContinueButton();
     }
 
-    @Test(dependsOnMethods = "checkThatUserCanRegisterSuccessfullyBeforeCheckOut",priority = 3)
+    @Test(priority = 3)
     public void checkThatUserCanLoginSuccessfullyBeforeCheckOut() throws InterruptedException {
-        driver.browser().deleteAllCookies();
+        driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com");
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully().clickOnSignUpLink();
-        new LoginSignupPage(driver).fillInSignUpName("yeehhhhyyuuaa ooosammaaaa")
-                .fillInSignUpEmail("yeehhaaaaooosssammmaaaaaaa@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yeehhhhyyyyuuaa ooosammaaaa")
+                .fillInSignUpEmail("yyyeehhaaaaooosssammmaaaaaaa@yahoo.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                 .selectTitle()
@@ -172,9 +173,9 @@ public class PaymentPageTest {
                 .clickOnContinueButton();
     }
 
-    @Test(dependsOnMethods = "checkThatUserCanLoginSuccessfullyBeforeCheckOut", priority = 4)
+    @Test( priority = 4)
     public void checkThatUserCanRemoveProductFromCart() throws InterruptedException {
-        driver.browser().deleteAllCookies();
+        driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com");
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnAddToCartFirstProduct()
                 .clickOnContinueShoppingButton()
@@ -186,7 +187,7 @@ public class PaymentPageTest {
 
     }
 
-    @Test(dependsOnMethods = "checkThatUserCanRemoveProductFromCart", priority = 5)
+    @Test(priority = 5)
     public void checkThatUserCanDownloadInvoiceAfterPurchase() throws InterruptedException {
         driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com");
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
