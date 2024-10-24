@@ -20,11 +20,11 @@ public class CartPageTest {
 
     @Test(priority = 1)
     public void subscriptionOfCartPage(){
-        new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully();
-        new Homepage(driver).clickOnCart();
+        new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
+        .clickOnCart();
         new CartPage(driver).checkThatUserNavigatedToCartSuccessfully();
         driver.browser().scrollToBottom();
-        new CartPage(driver).enterEmailAdress("yehiaosama009@gmail.com")
+        new CartPage(driver).enterEmailAdress("yehia@outlook.com")
                 .clickOnArrow();
 //                .checkThatSuccessfulSubscriptionMessageDisplayed();
     }
@@ -33,11 +33,10 @@ public class CartPageTest {
     public void checkThatSelectedProductsAddedToCartSuccessfully() throws InterruptedException {
         driver.browser().navigateToUrl("https://automationexercise.com");
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
-                .clickOnProductLink()
-                .scrollToFirstProduct()
+                .clickOnProductLink();
+                new ProductPage(driver).scrollToFirstProduct()
                 .hooverOnFirstProduct()
                 .clickOnAddToCartFirstProduct()
-                .hooverOnSecondProduct()
                 .clickOnAddToCartSecondProduct()
                 .clickOnCartButton();
         new CartPage(driver).checkThatBothProductsAddedToCart()
@@ -69,7 +68,7 @@ public class CartPageTest {
                 .clickOnCartButtonInJeansPage();
         new CartPage(driver).checkThatSelectedJeansItemsAddedToCart()
                 .clickOnSignUpLink()
-                .fillEmailAddressLogin("yehiaosama009@gmail.com")
+                .fillEmailAddressLogin("yehia@outlook.com")
                 .fillPassWordLogin("12345")
                 .pressOnLoginButton();
         new Homepage(driver).clickOnCart();

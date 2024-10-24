@@ -108,7 +108,7 @@ public class ProductPage {
 
     @Step("checkThatUserNavigatedToPolo")
     public ProductPage checkThatUserNavigatedToPolo(){
-        Assert.assertEquals(driver.element().getTextOf(poloTitle),"BRAND -  POLO PRODUCTS");
+        Assert.assertEquals(driver.element().getTextOf(poloTitle),"BRAND - POLO PRODUCTS");
         Assert.assertTrue(driver.browser().getCurrentUrl().contains("brand_products/Polo"));
         return this;
     }

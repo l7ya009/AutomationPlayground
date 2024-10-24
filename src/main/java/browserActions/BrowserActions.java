@@ -50,12 +50,12 @@ public class BrowserActions {
     }
 
     public BrowserActions scrollToBottom() {
-        new Actions(driver).scrollByAmount(0,8500).build().perform();
+        new Actions(driver).scrollByAmount(0,5000).build().perform();
         return this;
     }
 
     public BrowserActions scrollToUpper() {
-        new Actions(driver).scrollByAmount(0,-8500).build().perform();
+        new Actions(driver).scrollByAmount(0,-5000).build().perform();
         return this;
     }
 

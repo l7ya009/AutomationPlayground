@@ -65,7 +65,7 @@ public class productPageTest {
                 .checkThatProductDetailsDisplayed()
                 .checkThatReviewFormisDisplayed()
                 .fillReviewFormName("yehia")
-                .fillReviewFormEmail("yehiaosama009@gmail.com")
+                .fillReviewFormEmail("yehiaosamma009@gmail.com")
                 .fillReviewFormContent("Thank You")
                 .clickOnSubmitReviewButton()
                 .checkThatReviewSubmittedSuccessMessageDisplayed();

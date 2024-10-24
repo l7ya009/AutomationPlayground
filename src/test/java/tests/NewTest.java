@@ -30,8 +30,8 @@ public Driver driver;
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                             .clickOnLoginLink()
                             .checkThatUserCanNavigateToLoginSignUpPage()
-                            .fillInSignUpName("yeehhhiia")
-                            .fillInSignUpEmail("yeehhhiia@yahoo.com")
+                            .fillInSignUpName("yehiaaaaaaaa")
+                            .fillInSignUpEmail("yehiaaaaaa@yahoo.com")
                             .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                             .selectTitle()
@@ -60,7 +60,7 @@ public Driver driver;
     public void userCanLoginSuccessfully(){
         driver.browser().navigateToUrl("https://automationexercise.com/login");
 
-        new LoginSignupPage(driver).fillInLoginEmail("yeehhhiia@yahoo.com")
+        new LoginSignupPage(driver).fillInLoginEmail("yehiaaaaaa@yahoo.com")
                                    .fillInLoginPassword("12345")
                                    .clickOnLoginButton();
 
@@ -78,8 +78,8 @@ public Driver driver;
     @Test( priority = 4)
     public void userCannotRegisterWithExistingEmail(){
         driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com/login");
-        new LoginSignupPage(driver).fillInSignUpName("yeehhhiia")
-                                   .fillInSignUpEmail("yeehhhiia@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yehiaaaaaaaa")
+                                   .fillInSignUpEmail("yehiaaaaaa@yahoo.com")
                                    .clickOnSignUpButton();
         new LoginSignupPage(driver).checkThatUserCannotSignUpWithExistingEmail();
 
@@ -90,7 +90,7 @@ public Driver driver;
 
         driver.browser().deleteAllCookies().navigateToUrl("https://automationexercise.com/login");
         new LoginSignupPage(driver).checkThatUserCanNavigateToLoginSignUpPage()
-        .fillInLoginEmail("yeehhhiia@yahoo.com")
+        .fillInLoginEmail("yehiaaaaaa@yahoo.com")
                                    .fillInLoginPassword("12345")
                                    .clickOnLoginButton();
         new Homepage(driver).checkThatLogOutLinkShouldBeDisplayed()
@@ -103,7 +103,7 @@ public Driver driver;
     @Test(priority = 6)
     public void incorrectEmailAndPassword(){
         driver.browser().navigateToUrl("https://automationexercise.com/login");
-        new LoginSignupPage(driver).fillInLoginEmail("ye@yahoo.com")
+        new LoginSignupPage(driver).fillInLoginEmail("yehiaaaaaa@yahoo.com")
                                    .fillInLoginPassword("1234")
                                    .clickOnLoginButton()
                                    .checkThatUserCannotLoginWithWrongEmailAndPassword();

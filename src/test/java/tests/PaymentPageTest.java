@@ -28,8 +28,8 @@ public class PaymentPageTest {
         new CartPage(driver).clickOnProceedToCheckOut()
                 .clickOnContinueOnCart()
                 .clickOnSignUpLink();
-        new LoginSignupPage(driver).fillInSignUpName("yehiiiaaaaaaaa ooosamaaaa")
-                .fillInSignUpEmail("yehiiiaaaaooosamaaaaaa@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yeehhiiiaaaaaaaa ooosamaaaa")
+                .fillInSignUpEmail("yehhiiiaaaaooosammaaaaaa@yahoo.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).selectTitle()
                 .fillPassword("12345")
@@ -71,8 +71,8 @@ public class PaymentPageTest {
     public void checkThatUserCanRegisterSuccessfullyBeforeCheckOut() throws InterruptedException {
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnSignUpLink();
-        new LoginSignupPage(driver).fillInSignUpName("yehiiiaaaaaaaa ooosamaaaa")
-                .fillInSignUpEmail("yehiiiaaaaooosamaaaaaa@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yehhhiiiiaaaaaaaa ooosamaaaa")
+                .fillInSignUpEmail("yehhhiiiiaaaaooosamaaaaaa@yahoo.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                 .selectTitle()
@@ -121,8 +121,8 @@ public class PaymentPageTest {
     public void checkThatUserCanLoginSuccessfullyBeforeCheckOut() throws InterruptedException {
         driver.browser().deleteAllCookies();
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully().clickOnSignUpLink();
-        new LoginSignupPage(driver).fillInSignUpName("yehhhyyaa ooosamaaaa")
-                .fillInSignUpEmail("yehaaaaooossamaaaaaaa@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yeehhhhyyuuaa ooosammaaaa")
+                .fillInSignUpEmail("yeehhaaaaooosssammmaaaaaaa@yahoo.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                 .selectTitle()
@@ -146,7 +146,7 @@ public class PaymentPageTest {
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnLogoutLink();
         new LoginSignupPage(driver).checkThatUserCanNavigateToLoginSignUpPage()
-                .fillInLoginEmail("yehaaaaooossamaaaaaaa@yahoo.com")
+                .fillInLoginEmail("yeehhaaaaooosssammmaaaaaaa@yahoo.com")
                 .fillInLoginPassword("12345")
                 .clickOnLoginButton();
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
@@ -196,8 +196,8 @@ public class PaymentPageTest {
                 .checkThatCartPageIsDisplayed();
         new CartPage(driver).clickOnProceedToCheckOut()
                 .clickOnSignUpFromCheckOutBox();
-        new LoginSignupPage(driver).fillInSignUpName("yyyehia")
-                .fillInSignUpEmail("yyyehia@yahoo.com")
+        new LoginSignupPage(driver).fillInSignUpName("yyyyehhhia")
+                .fillInSignUpEmail("yyyyehhhia@yahoo.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                 .selectTitle()

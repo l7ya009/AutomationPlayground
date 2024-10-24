@@ -24,8 +24,8 @@ public class CheckOutTest {
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnSignUpLink();
         new LoginSignupPage(driver).checkThatUserCanNavigateToLoginSignUpPage()
-                .fillInSignUpName("yyyehia")
-                .fillInSignUpEmail("yyyehia@gmail.com")
+                .fillInSignUpName("yyyehiaa")
+                .fillInSignUpEmail("yyyehia@outlook.com")
                 .clickOnSignUpButton();
         new RegistrationPage(driver).checkThatUserShouldBeNavigatedToRegistrationPage()
                 .selectTitle()

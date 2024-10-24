@@ -27,7 +27,7 @@ public class SubscriptionTest {
 //new Homepage(driver).driver.browser().scrollToBottom();
                 new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                         .checkThatSubscriptionIsDisplayed()
-                        .fillSubscriptionField("yehiaosama00@gmail.com")
+                        .fillSubscriptionField("yehiaosamma00@gmail.com")
                 .clickOnSubscriptionButton();
 //                .checkThatSuccessfulSubscriptionMessageDisplayed();
     }

@@ -42,7 +42,7 @@ public class ContactUsTest {
         new Homepage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnContactUsLink()
                         .checkThatContactUsPageIsLoadedSuccessfully()
-                        .fillInContactUsForm("Yehia", "yehiaos@yahoo.com", "Test", "Welcome")
+                        .fillInContactUsForm("Yehiaa", "yehiaos@outlook.com", "Test", "Welcome")
                         .clickOnSubmitButton()
                         .checkThatFormShouldBeSubmittedSuccessfully()
                         .clickOnHomeButton()
