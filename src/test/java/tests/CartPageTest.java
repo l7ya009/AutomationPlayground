@@ -68,7 +68,7 @@ public class CartPageTest {
                 .clickOnCartButtonInJeansPage();
         new CartPage(driver).checkThatSelectedJeansItemsAddedToCart()
                 .clickOnSignUpLink()
-                .fillEmailAddressLogin("yehia@outlook.com")
+                .fillEmailAddressLogin("yehi@yahoo.com")
                 .fillPassWordLogin("12345")
                 .pressOnLoginButton();
         new Homepage(driver).clickOnCart();
